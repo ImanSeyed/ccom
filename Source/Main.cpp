@@ -1,7 +1,6 @@
 #include "Lexer.h"
 #include "Token.h"
 #include <fstream>
-#include <iomanip>
 #include <iostream>
 
 int main(int argc, char* argv[])
@@ -21,9 +20,9 @@ int main(int argc, char* argv[])
         std::istreambuf_iterator<char>());
 
     Lexer lex(code.data());
-    for (auto token = lex.next(); !(token.end() || token.unexpected()); token = lex.next()) {
-        std::cout << std::setw(12) << token.kind() << " |" << token.lexeme()
-                  << "|\n";
-    }
+    std::vector<Token> tokens = lex.get_tokens();
+
+    // TODO: parse tokens...
+
     return 0;
 }
