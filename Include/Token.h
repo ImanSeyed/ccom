@@ -78,6 +78,9 @@ public:
         return os << names[static_cast<int>(kind)];
     }
 
+    bool end() const noexcept { return m_kind == Kind::End; }
+    bool unexpected() const noexcept { return m_kind == Kind::Unexpected; }
+
 private:
     Kind m_kind {};
     std::string_view m_lexeme {};

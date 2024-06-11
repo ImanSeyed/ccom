@@ -21,9 +21,7 @@ int main(int argc, char* argv[])
         std::istreambuf_iterator<char>());
 
     Lexer lex(code.data());
-    for (auto token = lex.next();
-         token.kind() != Token::Kind::End && token.kind() != Token::Kind::Unexpected;
-         token = lex.next()) {
+    for (auto token = lex.next(); !(token.end() || token.unexpected()); token = lex.next()) {
         std::cout << std::setw(12) << token.kind() << " |" << token.lexeme()
                   << "|\n";
     }
